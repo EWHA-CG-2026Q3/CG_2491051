@@ -29,7 +29,10 @@ public class S03_CustomPolygonMesh_Square : MonoBehaviour
         mesh.RecalculateNormals();
 
         GetComponent<MeshFilter>().mesh = mesh;
-        GetComponent<MeshRenderer>().sharedMaterial =
-            new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        GetComponent<MeshFilter>().mesh.name = "CustomPentagon";
+
+        Material mat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        mat.color = new Color(0.2f, 0.6f, 1f); // 하늘색으로 마무리
+        GetComponent<MeshRenderer>().sharedMaterial = mat;
     }
 }
