@@ -19,10 +19,21 @@ public class S04_CustomPolygonMesh_Diamond : MonoBehaviour
             new Vector3(0f,   0.5f, 1f),   // 5: 허리띠 - 앞 왼쪽
         };
 
-        // TODO: 정점 3개씩 묶어 삼각형 8개를 구성하세요 (winding order 주의)
+        // 삼각형 8개: 위쪽 4개(apex=0) + 아래쪽 4개(apex=1)
+        // 위/아래는 바깥쪽 방향이 반대라서 winding order도 서로 반대로 감아야 함
         int[] triangles = new int[]
         {
-            // 예: 0, 3, 2,
+            // 위쪽 피라미드 (apex: 0번)
+            0, 3, 2,
+            0, 4, 3,
+            0, 5, 4,
+            0, 2, 5,
+
+            // 아래쪽 피라미드 (apex: 1번, 위쪽과 반대 순서)
+            1, 2, 3,
+            1, 3, 4,
+            1, 4, 5,
+            1, 5, 2,
         };
 
         Mesh mesh = new Mesh();
