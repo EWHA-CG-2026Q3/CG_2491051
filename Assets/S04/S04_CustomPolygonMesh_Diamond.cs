@@ -40,9 +40,12 @@ public class S04_CustomPolygonMesh_Diamond : MonoBehaviour
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.RecalculateNormals();
+        mesh.name = "CustomDiamond";
 
         GetComponent<MeshFilter>().mesh = mesh;
-        GetComponent<MeshRenderer>().sharedMaterial =
-            new Material(Shader.Find("Universal Render Pipeline/Lit"));
+
+        Material mat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        mat.color = new Color(0.6f, 0.85f, 1f); // 연한 하늘색으로 마무리
+        GetComponent<MeshRenderer>().sharedMaterial = mat;
     }
 }
